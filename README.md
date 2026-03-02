@@ -12,10 +12,6 @@ We propose **Cross-Domain Detection Loss (CDDL)**, a knowledge distillation fram
 - **CDDL**: A three-component KD loss (CIoU_KD + DFL_KD + BCE_KD) where the student mimics the teacher's detection outputs.
 - **MSI (Multi-Scale Input)**: A learnable multi-resolution fusion module that provides multi-scale information to the student.
 
-<p align="center">
-  <img src="https://arxiv.org/abs/2505.22677" alt="CDDL Framework" width="80%">
-</p>
-
 ## Installation
 
 ```bash
