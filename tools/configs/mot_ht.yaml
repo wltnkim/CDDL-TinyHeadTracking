@@ -1,0 +1,12 @@
+# CroHD / HT21 dataset configuration for head detection
+# Download: https://motchallenge.net/data/Head_Tracking_21/
+# Update paths below to point to your local dataset
+
+path: /path/to/HT21/images
+train: train
+val: val
+test: test
+
+# Classes
+nc: 1
+names: ['head']

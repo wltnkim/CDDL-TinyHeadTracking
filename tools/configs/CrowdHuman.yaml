@@ -1,0 +1,12 @@
+# CrowdHuman dataset configuration for head detection
+# Download: http://www.crowdhuman.org/
+# Update paths below to point to your local dataset
+
+path: /path/to/CrowdHuman/images
+train: train
+val: val
+test: test
+
+# Classes
+nc: 1
+names: ['head']
