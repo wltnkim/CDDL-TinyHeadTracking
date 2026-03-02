@@ -15,7 +15,7 @@ We propose **Cross-Domain Detection Loss (CDDL)**, a knowledge distillation fram
 ## Installation
 
 ```bash
-git clone https://github.com/your-username/CDDL-TinyHeadTracking.git
+git clone https://github.com/wltnkim/CDDL-TinyHeadTracking.git
 cd CDDL-TinyHeadTracking
 pip install -e .
 ```
@@ -98,23 +98,28 @@ python scripts/run_mot_challenge.py \
 
 ## Results
 
-### CrowdHuman Detection (Table 1)
+### CrowdHuman Detection (Table II)
 
-| Model | Method | mAP50 | mAP50-95 |
-|-------|--------|-------|----------|
-| YOLOv8l-p2 | Teacher Baseline | 0.697 | 0.416 |
-| YOLOv8s-p2 | Student Baseline | 0.643 | 0.378 |
-| YOLOv8s-p2 | CDDL | 0.660 | 0.388 |
-| YOLOv8s-p2 | CDDL + MS | **0.663** | **0.391** |
+| Method | Resolution | mAP50 | mAP50-95 | FLOPs |
+|--------|-----------|-------|----------|-------|
+| YOLOv8n | 640 | 0.608 | 0.361 | 4.10B |
+| YOLOv8s | 640 | 0.615 | 0.372 | 14.32B |
+| YOLOv8l | 640 | 0.642 | 0.395 | 82.70B |
+| YOLOv8n + SRFD + CDDL + MS | multi | 0.718 | 0.452 | 6.18B |
+| YOLOv8s + SRFD + CDDL + MS | multi | 0.735 | 0.470 | 18.47B |
+| YOLOv8m + SRFD + CDDL + MS | multi | 0.740 | 0.472 | 49.24B |
+| YOLOv8l + SRFD + MS | multi | **0.742** | **0.474** | 102.80B |
 
-### HT21 Tracking (Table 2)
+### CroHD Tracking (Table I)
 
-| Model | Method | HOTA | MOTA | IDF1 |
-|-------|--------|------|------|------|
-| YOLOv8l-p2 | Teacher Baseline | 54.6 | 69.4 | 55.5 |
-| YOLOv8s-p2 | Student Baseline | 50.3 | 59.6 | 51.8 |
-| YOLOv8s-p2 | CDDL | 53.5 | 67.1 | 54.8 |
-| YOLOv8s-p2 | CDDL + MS | **54.1** | **68.3** | **55.0** |
+| Tracker | MOTA | Time/Frame | FLOPs | MOTA/BFLOPs |
+|---------|------|-----------|-------|-------------|
+| YOLOv8s | 42.64 | 26.41ms | 14.32B | 2.977 |
+| YOLOv8l | 44.72 | 30.46ms | 82.70B | 0.540 |
+| YOLOv8s + SRFD + CDDL | 46.60 | 27.51ms | 18.47B | 2.523 |
+| YOLOv8s + SRFD + CDDL + MS | **56.22** | 27.52ms | 18.47B | **3.043** |
+| YOLOv8l + SRFD | 47.00 | 32.78ms | 102.80B | 0.457 |
+| YOLOv8l + SRFD + MS | 57.13 | 32.76ms | 102.80B | 0.555 |
 
 ## Project Structure
 
@@ -153,7 +158,7 @@ CDDL-TinyHeadTracking/
 ```bibtex
 @inproceedings{kim2025cddl,
   title={Using Cross-Domain Detection Loss to Infer Multi-Scale Information for Improved Tiny Head Tracking},
-  author={Kim, Jungho and Eom, Chris},
+  author={Kim, Jisu and Mattingly, Alex and Lee, Eung-Joo and Riggan, Benjamin S.},
   booktitle={IEEE International Conference on Automatic Face and Gesture Recognition (FG)},
   year={2025}
 }
